@@ -10,3 +10,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
 // spinner
 SpinnerComponent,
 """
+
+# add this to the import
+    SelectionLoaderModule,
