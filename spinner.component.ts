@@ -1,25 +1,22 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { SpinnerService } from './spinner.service';
 
 @Component({
+  standalone: true,
   selector: 'app-spinner',
   templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.scss']
+  styleUrls: ['./spinner.component.scss'],
+  imports: [CommonModule]
 })
 export class SpinnerComponent implements OnInit {
-  showSpinner = false
-  constructor(private spinnerService: SpinnerService, private cdRef: ChangeDetectorRef) {
-
-  }
+  showSpinner = false;
+  private spinnerService = inject(SpinnerService);
+  private cdRef = inject(ChangeDetectorRef);
 
   ngOnInit() {
-    this.init();
-  }
-
-  init() {
-
     this.spinnerService.getSpinnerObserver().subscribe((status) => {
-      this.showSpinner = (status === 'start');
+      this.showSpinner = status === 'start';
       this.cdRef.detectChanges();
     });
   }
