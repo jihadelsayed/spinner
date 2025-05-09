@@ -1,7 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 
+import { NgClass } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 @Component({
+  standalone: true,
+  imports: [NgClass, RouterModule], 
   selector: 'app-selection-loader',
     //templateUrl: './selection-loader.component.html',
 
